@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"mugg/sumo/app/cache"
 	"mugg/sumo/app/service"
 
 	"github.com/gin-gonic/gin"
@@ -10,6 +11,8 @@ type (
 	// GoodsController is
 	GoodsController struct {
 		Googs service.Goods
+		Cache appCache.Goods
+		Base  BaseController
 	}
 )
 
@@ -20,9 +23,7 @@ func NewGoods() *GoodsController {
 
 // Home is
 func (s GoodsController) Home(c *gin.Context) {
-
-	data, _ := s.Googs.GetAll()
-	c.JSON(200, gin.H{
-		"data": data,
-	})
+	// data, _ := s.Googs.GetAll()
+	data, _ := s.Cache.GetAll()
+	s.Base.SuccessJSONData(c, data)
 }

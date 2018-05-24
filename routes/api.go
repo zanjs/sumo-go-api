@@ -11,6 +11,10 @@ import (
 func API(g *gin.Engine) {
 	catController := controllers.NewCat()
 	goodsController := controllers.NewGoods()
+	goodsGroupController := controllers.NewGoodsGroup()
+	goodsBrandController := controllers.NewGoodsBrand()
+	goodsCategoryController := controllers.NewGoodsCategory()
+	goodsSkuController := controllers.NewGoodsSku()
 
 	api := g.Group("/api")
 
@@ -28,7 +32,27 @@ func API(g *gin.Engine) {
 
 	goods := v1.Group("/goods")
 	{
-		goods.GET("/", goodsController.Home)
+		goods.GET("", goodsController.Home)
+	}
+
+	goodsGroup := v1.Group("/goods/group")
+	{
+		goodsGroup.GET("", goodsGroupController.Home)
+	}
+
+	goodsBrand := v1.Group("/goods/brand")
+	{
+		goodsBrand.GET("", goodsBrandController.Home)
+	}
+
+	goodsCategory := v1.Group("/goods/category")
+	{
+		goodsCategory.GET("", goodsCategoryController.Home)
+	}
+
+	goodsSku := v1.Group("/goods/sku")
+	{
+		goodsSku.GET("", goodsSkuController.Home)
 	}
 
 }

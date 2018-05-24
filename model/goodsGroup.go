@@ -12,3 +12,8 @@ type GoodsGroup struct {
 	Sort      int64  `gorm:"column:sort" json:"sort" form:"sort"`
 	GroupDec  string `gorm:"column:group_dec" json:"group_dec" form:"group_dec"`
 }
+
+//TableName is set
+func (GoodsGroup) TableName() string {
+	return "ns_goods_group"
+}

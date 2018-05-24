@@ -87,7 +87,7 @@ type Goods struct {
 	GoodsUnit           string  `gorm:"column:goods_unit" json:"goods_unit" form:"goods_unit"`
 }
 
-//TableName is set User's table name to be `users`
+//TableName is set
 func (Goods) TableName() string {
 	return "ns_goods"
 }
